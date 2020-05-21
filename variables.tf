@@ -9,8 +9,8 @@ variable "aws_region" {
 }
 
 
-variable "metric_alarms" {
-  type = list(object({
+variable "metric_alarm" {
+  type = object({
     name = string               # alarm name
     description = string        # alarm description
     metric_name = string        # metric name
@@ -22,7 +22,7 @@ variable "metric_alarms" {
     threshold = string          # threshold value
     insufficient_data_actions = list(string)  # list of arns for insufficiant data event
     alarm_actions = list(string)  #list of arns for alarm event
-  }))
-  description = "List of metric alarms"
+  })
+  description = "Object represeting metric alarm"
 }
 

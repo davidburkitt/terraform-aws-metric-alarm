@@ -9,18 +9,17 @@ provider "aws" {
   shared_credentials_file = var.aws_creds
 }
 
-resource "aws_cloudwatch_metric_alarm" "metricAlarm" {
-  count = length(var.metric_alarms)
-  alarm_name                = var.metric_alarms[count.index].name
-  alarm_description         = var.metric_alarms[count.index].description
-  metric_name               = var.metric_alarms[count.index].metric_name
-  namespace                 = var.metric_alarms[count.index].metric_namespace
-  statistic                 = var.metric_alarms[count.index].statistic
-  comparison_operator       = var.metric_alarms[count.index].comparitor
-  period                    = var.metric_alarms[count.index].period
-  evaluation_periods        = var.metric_alarms[count.index].periods
-  threshold                 = var.metric_alarms[count.index].threshold
-  insufficient_data_actions = var.metric_alarms[count.index].insufficient_data_actions
-  alarm_actions             = var.metric_alarms[count.index].alarm_actions
+resource "aws_cloudwatch_metric_alarm" "metric_alarm" {
+  alarm_name                = var.metric_alarm.name
+  alarm_description         = var.metric_alarm.description
+  metric_name               = var.metric_alarm.metric_name
+  namespace                 = var.metric_alarm.metric_namespace
+  statistic                 = var.metric_alarm.statistic
+  comparison_operator       = var.metric_alarm.comparitor
+  period                    = var.metric_alarm.period
+  evaluation_periods        = var.metric_alarm.periods
+  threshold                 = var.metric_alarm.threshold
+  insufficient_data_actions = var.metric_alarm.insufficient_data_actions
+  alarm_actions             = var.metric_alarm.alarm_actions
 }
 
